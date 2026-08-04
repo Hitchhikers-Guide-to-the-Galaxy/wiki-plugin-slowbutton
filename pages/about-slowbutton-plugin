@@ -1,0 +1,88 @@
+{
+  "title": "About SlowButton Plugin",
+  "story": [
+    {
+      "type": "markdown",
+      "id": "a10adf75f67754f0",
+      "text": "The SlowButton plugin renders a button that knows how long its action takes. Click it and it POSTs to an endpoint, shading itself like a progress bar against an estimated duration; if the action runs over the estimate the shading reverses, filling red from the right edge back as the overrun grows. Each completed run joins a learning set, so the estimate improves with use."
+    },
+    {
+      "type": "markdown",
+      "id": "b3a78e90f9d07e31",
+      "text": "The item text is a small DSL \u2014 UPPERCASE commands, lowercase data:"
+    },
+    {
+      "type": "markdown",
+      "id": "dd5e994f9d1ba4d0",
+      "text": "POST //api.example.com/slow/action\nLABEL Do the slow thing\nTIME 4m\nREMEMBER\ntimes-are-appended-here-as: TIMES 178 305 244\nquery: what to act on"
+    },
+    {
+      "type": "markdown",
+      "id": "f6a989c2c80a98ed",
+      "text": "`POST` names the endpoint; lowercase `key: value` lines form the JSON body. `TIME` seeds the estimate (`240`, `90s`, `4m`). `REMEMBER` lets the plugin write its observed durations back into the item as a `TIMES` line \u2014 the learning then syncs and forks with the page; without it (or without edit rights) runs are remembered in the browser's localStorage instead. The estimate is the mean of everything observed, falling back to `TIME`, falling back to one minute."
+    },
+    {
+      "type": "markdown",
+      "id": "1ad39081f08c1a08",
+      "text": "Endpoints that answer slowly should reply immediately with page-json carrying a top-level `progress` object \u2014 `{\"status\": \"running\", \"elapsed\": 12}` \u2014 and the button polls quietly until the real page arrives. A `fraction` field (0 to 1), when present, drives the bar directly as a live feed; otherwise the learned estimate does. The final response opens in the lineup as a ghost page."
+    },
+    {
+      "type": "markdown",
+      "id": "2f45578661347a10",
+      "text": "## Repositories"
+    },
+    {
+      "type": "markdown",
+      "id": "0e13d28a419cb609",
+      "text": "- [https://github.com/Hitchhikers-Guide-to-the-Galaxy/wiki-plugin-slowbutton github]\n- [https://www.npmjs.com/package/wiki-plugin-slowbutton npm]"
+    }
+  ],
+  "journal": [
+    {
+      "type": "create",
+      "item": {
+        "title": "About SlowButton Plugin",
+        "story": [
+          {
+            "type": "markdown",
+            "id": "a10adf75f67754f0",
+            "text": "The SlowButton plugin renders a button that knows how long its action takes. Click it and it POSTs to an endpoint, shading itself like a progress bar against an estimated duration; if the action runs over the estimate the shading reverses, filling red from the right edge back as the overrun grows. Each completed run joins a learning set, so the estimate improves with use."
+          },
+          {
+            "type": "markdown",
+            "id": "b3a78e90f9d07e31",
+            "text": "The item text is a small DSL \u2014 UPPERCASE commands, lowercase data:"
+          },
+          {
+            "type": "markdown",
+            "id": "dd5e994f9d1ba4d0",
+            "text": "POST //api.example.com/slow/action\nLABEL Do the slow thing\nTIME 4m\nREMEMBER\ntimes-are-appended-here-as: TIMES 178 305 244\nquery: what to act on"
+          },
+          {
+            "type": "markdown",
+            "id": "f6a989c2c80a98ed",
+            "text": "`POST` names the endpoint; lowercase `key: value` lines form the JSON body. `TIME` seeds the estimate (`240`, `90s`, `4m`). `REMEMBER` lets the plugin write its observed durations back into the item as a `TIMES` line \u2014 the learning then syncs and forks with the page; without it (or without edit rights) runs are remembered in the browser's localStorage instead. The estimate is the mean of everything observed, falling back to `TIME`, falling back to one minute."
+          },
+          {
+            "type": "markdown",
+            "id": "1ad39081f08c1a08",
+            "text": "Endpoints that answer slowly should reply immediately with page-json carrying a top-level `progress` object \u2014 `{\"status\": \"running\", \"elapsed\": 12}` \u2014 and the button polls quietly until the real page arrives. A `fraction` field (0 to 1), when present, drives the bar directly as a live feed; otherwise the learned estimate does. The final response opens in the lineup as a ghost page."
+          },
+          {
+            "type": "markdown",
+            "id": "2f45578661347a10",
+            "text": "## Repositories"
+          },
+          {
+            "type": "markdown",
+            "id": "0e13d28a419cb609",
+            "text": "- [https://github.com/Hitchhikers-Guide-to-the-Galaxy/wiki-plugin-slowbutton github]\n- [https://www.npmjs.com/package/wiki-plugin-slowbutton npm]"
+          }
+        ]
+      },
+      "date": 1785870172047,
+      "provenance": "Authored by an AI agent \u2014 Claude Code (claude-fable-5) via the [[fedwiki-create-plugin]] skill, in dialogue with David Bovill, session 2026-08-04. [https://claude.com/claude-code Claude Code]"
+    }
+  ],
+  "plugin": "slowbutton"
+}
