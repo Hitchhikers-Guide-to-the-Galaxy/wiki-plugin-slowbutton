@@ -1,6 +1,6 @@
 {
   "name": "wiki-plugin-slowbutton",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Federated Wiki plugin — a button that estimates how long its action takes, shades itself with progress, reverses in red on overrun, and learns from previous runs",
   "keywords": [
     "wiki",
